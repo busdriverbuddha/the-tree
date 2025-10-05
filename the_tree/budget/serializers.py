@@ -1,3 +1,5 @@
+# budget/serializers.py
+
 from .adapters.serializers.account_serializer import AccountSerializer
 from .adapters.serializers.budget_serializer import BudgetSerializer
 from .adapters.serializers.category_serializer import CategorySerializer

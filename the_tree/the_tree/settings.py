@@ -1,3 +1,5 @@
+# the_tree/settings.py
+
 from datetime import timedelta
 from pathlib import Path
 
@@ -28,7 +30,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'auth',
     'budget',
 ]
 

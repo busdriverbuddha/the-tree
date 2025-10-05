@@ -1,3 +1,5 @@
+# budget/domain/django/supercategory_model.py
+
 from django.db import models
 
 from .budget_model import Budget

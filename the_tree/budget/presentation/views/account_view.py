@@ -1,3 +1,5 @@
+# budget/presentation/views/account_view.py
+
 from budget.models import Account
 from budget.serializers import AccountSerializer
 

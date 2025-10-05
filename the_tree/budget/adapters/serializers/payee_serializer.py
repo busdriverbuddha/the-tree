@@ -1,3 +1,5 @@
+# budget/adapters/serializers/payee_serializer.py
+
 from rest_framework import serializers
 from budget.models import Payee
 

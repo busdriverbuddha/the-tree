@@ -1,3 +1,5 @@
+# budget/presentation/views/flow_view.py
+
 from budget.models import Flow
 from budget.serializers import FlowSerializer
 

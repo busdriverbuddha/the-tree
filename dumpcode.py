@@ -33,15 +33,19 @@ BASEDIRS = {
     'frontend': Path("./the-tree-frontend"),
 }
 
+DUMP_PATHS = {
+    'backend': Path("./dump/backend-dump.txt"),
+    'frontend': Path("./dump/frontend-dump.txt"),
+}
 
-def tag_file(rel_path: Path, base_dir: Path):
+
+def tag_file(rel_path: Path, base_dir: Path) -> str:
     prefix = COMMENT_PREFIX.get(rel_path.suffix, None)
     abspath = base_dir / rel_path
     tag = f"{prefix} {rel_path}"
-    print(tag)
 
     if prefix is None:
-        return
+        assert False
 
     lines = abspath.read_text().splitlines()
     while lines and (lines[0].strip() == "" or lines[0].strip().startswith(prefix)):
@@ -49,7 +53,9 @@ def tag_file(rel_path: Path, base_dir: Path):
 
     lines = [tag, ""] + lines + [""]
     text = "\n".join(lines)
+    print(f"Writing into {abspath}...")
     abspath.write_text(text)
+    return abspath.read_text()
 
 
 def get_file_list(module: str) -> list[Path]:
@@ -71,9 +77,12 @@ def get_file_list(module: str) -> list[Path]:
 def main(module: str):
     basedir = BASEDIRS[module]
     relpaths = get_file_list(module)
+    dump = []
     for rp in relpaths:
-        tag_file(rp, basedir)
-
+        dump.append(tag_file(rp, basedir))
+    dump_path = DUMP_PATHS[module]
+    dump_path.write_text("\n\n".join(dump))
+    print(f"Dump written to {dump_path}.")
 
 if __name__ == "__main__":
     args = parser.parse_args()

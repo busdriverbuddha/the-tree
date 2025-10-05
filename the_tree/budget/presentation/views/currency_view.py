@@ -1,3 +1,5 @@
+# budget/presentation/views/currency_view.py
+
 from budget.models import Currency
 from budget.serializers import CurrencySerializer
 

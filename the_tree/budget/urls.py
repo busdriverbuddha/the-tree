@@ -1,3 +1,5 @@
+# budget/urls.py
+
 from django.urls import path
 
 from budget.views import (

@@ -1,3 +1,5 @@
+# budget/domain/django/currency_model.py
+
 from django.db import models
 
 

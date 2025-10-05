@@ -1,3 +1,5 @@
+# budget/domain/django/payee_model.py
+
 from django.db import models
 
 from .category_model import Category

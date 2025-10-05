@@ -1,3 +1,5 @@
+# budget/presentation/views/supercategory_view.py
+
 from budget.models import Supercategory
 from budget.serializers import SupercategorySerializer
 

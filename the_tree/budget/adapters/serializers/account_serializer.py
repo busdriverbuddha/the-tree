@@ -1,3 +1,5 @@
+# budget/adapters/serializers/account_serializer.py
+
 from rest_framework import serializers
 from budget.models import Account
 

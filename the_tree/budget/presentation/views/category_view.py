@@ -1,3 +1,5 @@
+# budget/presentation/views/category_view.py
+
 from budget.models import Category
 from budget.serializers import CategorySerializer
 
