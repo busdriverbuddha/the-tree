@@ -9,11 +9,11 @@ from .payee_model import Payee
 
 
 class Flow(models.Model):
-    
+
     class FlowType(models.TextChoices):
         INFLOW = "inflow", _("Inflow")
         OUTFLOW = "outflow", _("Outflow")
-        
+
     created_at = models.DateTimeField(auto_now_add=True)
     bank_date = models.DateField(help_text="The actual date registered at the payment provider.")
 
@@ -27,3 +27,6 @@ class Flow(models.Model):
     transfer = models.ForeignKey("Flow", on_delete=models.CASCADE, blank=True, null=True)
 
     comments = models.TextField(blank=True, null=True)
+
+    def owner(self):
+        return self.account.budget.owner

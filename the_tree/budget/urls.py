@@ -19,11 +19,11 @@ urlpatterns = [
     path('budgets/', BudgetListView.as_view(), name='budget-list'),
     path('budgets/<int:pk>/', BudgetDetailView.as_view(), name='budget-detail'),
 
-    path('currencies/', CurrencyListView.as_view(), name='currency-list'),
-    path('currencies/<int:pk>/', CurrencyDetailView.as_view(), name='currency-detail'),
-
     path('categories/', CategoryListView.as_view(), name='category-list'),
     path('categories/<int:pk>/', CategoryDetailView.as_view(), name='category-detail'),
+
+    path('currencies/', CurrencyListView.as_view(), name='currency-list'),
+    path('currencies/<int:pk>/', CurrencyDetailView.as_view(), name='currency-detail'),
 
     path('flows/', FlowListView.as_view(), name='flow-list'),
     path('flows/<int:pk>/', FlowDetailView.as_view(), name='flow-detail'),

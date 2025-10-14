@@ -1,4 +1,5 @@
 # budget/permissions.py
+
 from rest_framework.permissions import BasePermission, SAFE_METHODS
 
 
@@ -6,16 +7,16 @@ class CurrencyPermission(BasePermission):
     """
     Anyone can read; only staff can write.
     """
-    def has_permission(self, request, view):
+    def has_permission(self, request, view):  # type: ignore
         if request.method in SAFE_METHODS:
             return True
         return bool(request.user and request.user.is_staff)
 
-    def has_object_permission(self, request, view, obj):
+    def has_object_permission(self, request, view, obj):  # type: ignore
         # Same logic at object level
         if request.method in SAFE_METHODS:
             return True
-        return bool(request.user and request.user.is_staff)
+        return bool(request.user.is_authenticated and request.user.is_staff)
 
 
 class IsBudgetOwner(BasePermission):
@@ -23,6 +24,7 @@ class IsBudgetOwner(BasePermission):
     Only the owner of the related Budget can access.
     Applies to Budget, Account, Flow, Category, Payee, Supercategory.
     """
-    def has_object_permission(self, request, view, obj):
-        budget = resolve_budget_from_instance(obj)
-        return bool(budget and budget.owner_id == getattr(request.user, "id", None))
+    def has_object_permission(self, request, view, obj):  # type: ignore
+        if not request.user.is_authenticated:
+            return False
+        return request.user.is_staff or obj.owner == request.user

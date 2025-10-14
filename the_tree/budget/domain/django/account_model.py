@@ -21,3 +21,7 @@ class Account(models.Model):
     created_at = models.DateField(auto_now_add=True, editable=False)
     currency = models.ForeignKey(Currency, on_delete=models.PROTECT, related_name="accounts", editable=False)
     name = models.CharField(max_length=128)
+
+    @property
+    def owner(self):
+        return self.budget.owner
