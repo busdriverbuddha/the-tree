@@ -29,7 +29,7 @@ EXCLUDES = {
 }
 
 BASEDIRS = {
-    'backend': Path("./the_tree"),
+    'backend': Path("./the-tree-backend"),
     'frontend': Path("./the-tree-frontend"),
 }
 
