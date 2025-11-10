@@ -24,7 +24,7 @@ GLOB_PATTERNS = {
 }
 
 EXCLUDES = {
-    'backend': ['migrations', '__pycache__'],
+    'backend': ['migrations', '__pycache__', '.venv'],
     'frontend': [],
 }
 
@@ -81,8 +81,10 @@ def main(module: str):
     for rp in relpaths:
         dump.append(tag_file(rp, basedir))
     dump_path = DUMP_PATHS[module]
+    dump_path.parent.mkdir(exist_ok=True, parents=True)
     dump_path.write_text("\n\n".join(dump))
     print(f"Dump written to {dump_path}.")
+
 
 if __name__ == "__main__":
     args = parser.parse_args()
