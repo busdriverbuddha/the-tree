@@ -1,3 +1,6 @@
 [submodule "the-tree-frontend"]
 	path = the-tree-frontend
 	url = git@github.com:busdriverbuddha/the-tree-frontend
+[submodule "the-tree-backend"]
+	path = the-tree-backend
+	url = git@github.com:busdriverbuddha/the-tree-backend
